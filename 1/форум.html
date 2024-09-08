@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум о книгах</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 1em;
+        }
+        .post-form {
+            background-color: #fff;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .post-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 0.5em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 1em;
+        }
+        .post-form input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .post-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .post {
+            background-color: #fff;
+            padding: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 1em;
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+        .post p {
+            margin: 0;
+        }
+        .back-button {
+            position: fixed;
+            top: 1em;
+            left: 1em;
+            background-color: yellow;
+            color: black;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-button:hover {
+            background-color: #f7f700;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='main.html'">Назад</button>
+    <header>
+        <h1>Форум о прочитанных книгах</h1>
+    </header>
+    <div class="container">
+        <div class="post-form">
+            <h2>Добавить новый пост</h2>
+            <form action="/submit_post" method="POST">
+                <label for="title">Название книги:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="author">Автор:</label>
+                <input type="text" id="author" name="author" required>
+                
+                <label for="content">Ваш отзыв:</label>
+                <textarea id="content" name="content" required></textarea>
+                
+                <input type="submit" value="Отправить">
+            </form>
+        </div>
+        <div class="posts">
+            <!-- Пример поста -->
+            <div class="post">
+                <h2>Название книги - Автор</h2>
+                <p>Отзыв о книге...</p>
+            </div>
+            <!-- Конец примера поста -->
+        </div>
+    </div>
+</body>
+</html>

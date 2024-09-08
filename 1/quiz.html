@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игры и ивенты</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #0B2545;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #142850;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: #F2C94C;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .games-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .game-button {
+            background-color: #F2C94C;
+            color: #0B2545;
+            border: none;
+            border-radius: 10px;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 200px;
+            height: 150px;
+        }
+
+        .game-button:hover {
+            transform: scale(1.1);
+        }
+
+        .game-title {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .game-description {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #142850;
+            padding: 20px;
+            text-align: center;
+            color: #F2C94C;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <header>
+        <a href="main.html">Главная</a>        
+        <a href="forum.html">Форум</a>
+        <a href="Rating.html">Рейтинг</a>
+        <a href="about.html">О нас</a>
+    </header>
+
+    <!-- Контент с играми -->
+    <h1 style="text-align: center; padding-top: 30px;">Игры и ивенты</h1>
+    
+    <div class="games-container">
+        <!-- Кнопка для игры 1 -->
+        <div>
+            <button class="game-button" onclick="window.location.href='quiz1.html'">Викторина</button>
+            <div class="game-title">Викторина</div>
+            <div class="game-description">Отвечайте на вопросы и узнайте, какая книга вам подходит!</div>
+        </div>
+
+        <!-- Кнопка для игры 2 -->
+        <div>
+            <button class="game-button" onclick="window.location.href='puzzle.html'">Книжные пазлы</button>
+            <div class="game-title">Книжные пазлы</div>
+            <div class="game-description">Собирайте фрагменты обложек известных книг.</div>
+        </div>
+
+        <!-- Кнопка для игры 3 -->
+        <div>
+            <button class="game-button" onclick="window.location.href='zmeyka_new.html'">Книжный червь</button>
+            <div class="game-title">Книжный червь</div>
+            <div class="game-description">Съешьте как можно больше книг.</div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        &copy; 2024 Библиотека имени Н.В. Гоголя
+    </footer>
+
+</body>
+</html>

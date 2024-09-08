@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какая книга вам подходит?</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #0B2545;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #F2C94C;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #142850;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-size: 18px;
+        }
+
+        .question input {
+            margin-right: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #F2C94C;
+        }
+
+        button {
+            background-color: #F2C94C;
+            color: #0B2545;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Какая книга вам подходит?</h1>
+    
+    <div class="quiz-container">
+        <!-- Вопросы викторины -->
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Какой жанр вы предпочитаете?</p>
+                <input type="radio" name="q1" value="fiction"> Художественная литература<br>
+                <input type="radio" name="q1" value="nonfiction"> Нон-фикшн<br>
+                <input type="radio" name="q1" value="fantasy"> Фэнтези<br>
+                <input type="radio" name="q1" value="mystery"> Детектив
+            </div>
+
+            <div class="question">
+                <p>2. Что для вас важнее в книге?</p>
+                <input type="radio" name="q2" value="characters"> Персонажи<br>
+                <input type="radio" name="q2" value="plot"> Сюжет<br>
+                <input type="radio" name="q2" value="setting"> Место действия<br>
+                <input type="radio" name="q2" value="writing"> Стиль написания
+            </div>
+
+            <div class="question">
+                <p>3. Какой тип повествования вам нравится?</p>
+                <input type="radio" name="q3" value="first-person"> От первого лица<br>
+                <input type="radio" name="q3" value="third-person"> От третьего лица<br>
+                <input type="radio" name="q3" value="omniscient"> Всеведущий рассказчик<br>
+                <input type="radio" name="q3" value="epistolary"> Письменная форма
+            </div>
+
+            <div class="question">
+                <p>4. Какой исторический период вас интересует?</p>
+                <input type="radio" name="q4" value="ancient"> Древний<br>
+                <input type="radio" name="q4" value="medieval"> Средневековье<br>
+                <input type="radio" name="q4" value="modern"> Современный<br>
+                <input type="radio" name="q4" value="futuristic"> Будущее
+            </div>
+
+            <div class="question">
+                <p>5. Из какой страны вы предпочитаете авторов?</p>
+                <input type="radio" name="q5" value="usa"> США<br>
+                <input type="radio" name="q5" value="uk"> Великобритания<br>
+                <input type="radio" name="q5" value="russia"> Россия<br>
+                <input type="radio" name="q5" value="asia"> Азия
+            </div>
+
+            <div class="question">
+                <p>6. Какой темп повествования вам нравится?</p>
+                <input type="radio" name="q6" value="fast"> Быстрый<br>
+                <input type="radio" name="q6" value="moderate"> Средний<br>
+                <input type="radio" name="q6" value="slow"> Медленный<br>
+                <input type="radio" name="q6" value="epic"> Эпический
+            </div>
+
+            <div class="question">
+                <p>7. Какой уровень сложности вам подходит?</p>
+                <input type="radio" name="q7" value="easy"> Легкий<br>
+                <input type="radio" name="q7" value="moderate"> Средний<br>
+                <input type="radio" name="q7" value="challenging"> Сложный<br>
+                <input type="radio" name="q7" value="complex"> Очень сложный
+            </div>
+
+            <div class="question">
+                <p>8. Какой основной конфликт вам интересен?</p>
+                <input type="radio" name="q8" value="man-vs-man"> Человек против человека<br>
+                <input type="radio" name="q8" value="man-vs-nature"> Человек против природы<br>
+                <input type="radio" name="q8" value="man-vs-self"> Человек против себя<br>
+                <input type="radio" name="q8" value="man-vs-society"> Человек против общества
+            </div>
+
+            <div class="question">
+                <p>9. Какой тип главного героя вам больше всего нравится?</p>
+                <input type="radio" name="q9" value="hero"> Герой<br>
+                <input type="radio" name="q9" value="antihero"> Антигерой<br>
+                <input type="radio" name="q9" value="everyman"> Обычный человек<br>
+                <input type="radio" name="q9" value="villain"> Злодей
+            </div>
+
+            <div class="question">
+                <p>10. В каком формате вы предпочитаете читать книги?</p>
+                <input type="radio" name="q10" value="print"> Печать<br>
+                <input type="radio" name="q10" value="ebook"> Электронная книга<br>
+                <input type="radio" name="q10" value="audiobook"> Аудиокнига<br>
+                <input type="radio" name="q10" value="graphic-novel"> Графический роман
+            </div>
+
+            <button type="button" onclick="showResult()">Узнать результат</button>
+        </form>
+
+        <!-- Результат -->
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function showResult() {
+            var scores = {
+                'book1': 0, // Художественная литература: "Убить пересмешника" Харпер Ли
+                'book2': 0, // Нон-фикшн: "Сапиенс: Краткая история человечества" Юваль Ной Харари
+                'book3': 0, // Фэнтези: "Гарри Поттер и философский камень" Дж.К. Роулинг
+                'book4': 0, // Детектив: "Девушка с татуировкой дракона" Стиг Ларссон
+                'book5': 0, // Художественная литература: "1984" Джордж Оруэлл
+                'book6': 0, // Нон-фикшн: "Образованная" Тара Вестовер
+                'book7': 0, // Фэнтези: "Хоббит" Дж.Р.Р. Толкин
+                'book8': 0, // Детектив: "Исчезнувшая" Гиллиан Флинн
+                'book9': 0, // Художественная литература: "Гордость и предубеждение" Джейн Остин
+                'book10': 0, // Нон-фикшн: "Бессмертная жизнь Генриетты Лакс" Ребекка Склут
+                'book11': 0, // Фэнтези: "Песнь льда и огня" Джордж Р.Р. Мартин
+                'book12': 0, // Детектив: "Большие маленькие лжи" Лиан Мориарти
+                'book13': 0, // Художественная литература: "Великий Гэтсби" Ф. С. Фицджеральд
+                'book14': 0, // Нон-фикшн: "Думай медленно... решай быстро" Даниэль Канеман
+                'book15': 0, // Фэнтези: "Имя ветра" Патрик Ротфусс
+                'book16': 0, // Детектив: "Код да Винчи" Дэн Браун
+                'book17': 0, // Художественная литература: "Над пропастью во ржи" Дж. Д. Сэлинджер
+                'book18': 0, // Нон-фикшн: "Переломный момент" Малкольм Гладуэлл
+                'book19': 0, // Фэнтези: "Хроники Нарнии" К.С. Льюис
+                'book20': 0, // Детектив: "В лесу" Тана Френч
+                'book21': 0, // Художественная литература: "Сторик и времен" Габриэль Гарсиа Маркес
+                'book22': 0, // Нон-фикшн: "Краткая история времени" Стивен Хокинг
+                'book23': 0, // Фэнтези: "Туманность" Брэндон Сандерсон
+                'book24': 0, // Детектив: "Молчание ягнят" Томас Харрис
+                'book25': 0, // Художественная литература: "Дорога" Кормак Маккарти
+                'book26': 0, // Нон-фикшн: "Братья Райт" Дэвид Макаулей
+                'book27': 0, // Фэнтези: "Белгариад" Дэвид Эддингс
+                'book28': 0, // Детектив: "Шерлок Холмс" Артур Конан Дойл
+                'book29': 0, // Художественная литература: "Уловка 22" Джозеф Хеллер
+                'book30': 0, // Нон-фикшн: "Сила привычки" Чарльз Дахигг
+                'book31': 0, // Фэнтези: "Тёмная башня" Стивен Кинг
+                'book32': 0, // Детектив: "Убийство Роджера Акройда" Агата Кристи
+                'book33': 0, // Художественная литература: "Любовь во время холеры" Габриэль Гарсиа Маркес
+                'book34': 0, // Нон-фикшн: "Фрикономика" Стивен Д. Левитт
+                'book35': 0, // Фэнтези: "Никогда где" Нил Гейман
+                'book36': 0, // Детектив: "Детективное агентство номер один для дам" Александер Макколл Смит
+                'book37': 0, // Художественная литература: "Маленькие женщины" Луиза Мэй Олкотт
+                'book38': 0, // Нон-фикшн: "Рожденный преступником" Тревор Ноа
+                'book39': 0, // Фэнтези: "Добрые знамена" Нил Гейман и Терри Пратчетт
+                'book40': 0, // Детектив: "Зов кукушки" Роберт Гэлбрайт
+                'book41': 0, // Художественная литература: "Колокол" Сильвия Плат
+                'book42': 0, // Нон-фикшн: "Тонкое искусство пофигизма" Марк Мэнсон
+                'book43': 0, // Фэнтези: "Город костей" Кассандра Клэр
+                'book44': 0, // Детектив: "До того, как я усну" С. Дж. Уотсон
+                'book45': 0, // Фэнтези: "Дюна" Фрэнк Герберт
+                'book46': 0, // Нон-фикшн: "Хомо Деус" Юваль Ной Харари
+                'book47': 0, // Фэнтези: "Маги" Лев Гроссман
+                'book48': 0, // Детектив: "Женщина в окне" А. Дж. Финн
+                'book49': 0, // Художественная литература: "Изгои" С. Е. Хинтон
+                'book50': 0  // Нон-фикшн: "Искусство войны" Сунь Цзы
+            };
+
+            var form = document.forms['quizForm'];
+
+            // Обработка ответов
+            var answers = {
+                'fiction': ['book1', 'book3', 'book5', 'book7', 'book9', 'book13', 'book17', 'book21', 'book25', 'book29', 'book33', 'book37', 'book41', 'book45', 'book49'],
+                'nonfiction': ['book2', 'book6', 'book10', 'book14', 'book18', 'book22', 'book26', 'book30', 'book34', 'book38', 'book42', 'book46', 'book50'],
+                'fantasy': ['book3', 'book7', 'book11', 'book15', 'book19', 'book23', 'book27', 'book31', 'book35', 'book39', 'book43', 'book47'],
+                'mystery': ['book4', 'book8', 'book12', 'book16', 'book20', 'book24', 'book28', 'book32', 'book36', 'book40', 'book44', 'book48']
+            };
+
+            var scores = {};
+
+            for (var key in answers) {
+                scores[key] = 0;
+            }
+
+            // Вопросы и подсчёт баллов
+            for (var i = 1; i <= 10; i++) {
+                var answer = form['q' + i];
+                if (answer) {
+                    var selectedValue = document.querySelector('input[name="q' + i + '"]:checked');
+                    if (selectedValue) {
+                        var value = selectedValue.value;
+                        if (answers[value]) {
+                            answers[value].forEach(function(book) {
+                                scores[book] = (scores[book] || 0) + 1;
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Определение результата
+            var recommendedBook = '';
+            var maxScore = -1;
+            for (var book in scores) {
+                if (scores[book] > maxScore) {
+                    maxScore = scores[book];
+                    recommendedBook = book;
+                }
+            }
+
+            var bookTitles = {
+                'book1': "Убить пересмешника - Харпер Ли",
+                'book2': "Сапиенс: Краткая история человечества - Юваль Ной Харари",
+                'book3': "Гарри Поттер и философский камень - Дж.К. Роулинг",
+                'book4': "Девушка с татуировкой дракона - Стиг Ларссон",
+                'book5': "1984 - Джордж Оруэлл",
+                'book6': "Образованная - Тара Вестовер",
+                'book7': "Хоббит - Дж.Р.Р. Толкин",
+                'book8': "Исчезнувшая - Гиллиан Флинн",
+                'book9': "Гордость и предубеждение - Джейн Остин",
+                'book10': "Бессмертная жизнь Генриетты Лакс - Ребекка Склут",
+                'book11': "Песнь льда и огня - Джордж Р.Р. Мартин",
+                'book12': "Большие маленькие лжи - Лиан Мориарти",
+                'book13': "Великий Гэтсби - Ф. С. Фицджеральд",
+                'book14': "Думай медленно... решай быстро - Даниэль Канеман",
+                'book15': "Имя ветра - Патрик Ротфусс",
+                'book16': "Код да Винчи - Дэн Браун",
+                'book17': "Над пропастью во ржи - Дж. Д. Сэлинджер",
+                'book18': "Переломный момент - Малкольм Гладуэлл",
+                'book19': "Хроники Нарнии - К.С. Льюис",
+                'book20': "В лесу - Тана Френч",
+                'book21': "Сто лет одиночества - Габриэль Гарсиа Маркес",
+                'book22': "Краткая история времени - Стивен Хокинг",
+                'book23': "Mistborn - Брэндон Сандерсон",
+                'book24': "Молчание ягнят - Томас Харрис",
+                'book25': "Дорога - Кормак Маккарти",
+                'book26': "Братья Райт - Дэвид Макаулей",
+                'book27': "Белгариад - Дэвид Эддингс",
+                'book28': "Шерлок Холмс - Артур Конан Дойл",
+                'book29': "Уловка 22 - Джозеф Хеллер",
+                'book30': "Сила привычки - Чарльз Дахигг",
+                'book31': "Тёмная башня - Стивен Кинг",
+                'book32': "Убийство Роджера Акройда - Агата Кристи",
+                'book33': "Любовь во время холеры - Габриэль Гарсиа Маркес",
+                'book34': "Фрикономика - Стивен Д. Левитт",
+                'book35': "Никогда где - Нил Гейман",
+                'book36': "Детективное агентство номер один для дам - Александер Макколл Смит",
+                'book37': "Маленькие женщины - Луиза Мэй Олкотт",
+                'book38': "Рожденный преступником - Тревор Ноа",
+                'book39': "Добрые знамена - Нил Гейман и Терри Пратчетт",
+                'book40': "Зов кукушки - Роберт Гэлбрайт",
+                'book41': "Колокол - Сильвия Плат",
+                'book42': "Тонкое искусство пофигизма - Марк Мэнсон",
+                'book43': "Город костей - Кассандра Клэр",
+                'book44': "До того, как я усну - С. Дж. Уотсон",
+                'book45': "Дюна - Фрэнк Герберт",
+                'book46': "Хомо Деус - Юваль Ной Харари",
+                'book47': "Маги - Лев Гроссман",
+                'book48': "Женщина в окне - А. Дж. Финн",
+                'book49': "Изгои - С. Е. Хинтон",
+                'book50': "Искусство войны - Сунь Цзы"
+            };
+
+            var resultText = recommendedBook ? 'Вам подойдет книга: ' + bookTitles[recommendedBook] : 'Выберите ответы, чтобы получить результат.';
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+    
+</body>
+</html>

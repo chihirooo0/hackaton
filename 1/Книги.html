@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .books-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .book-card {
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .book-card img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .book-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .book-card p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .genre {
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 15px;
+        }
+
+        .read-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .read-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка Назад -->
+    <a href="main.html" class="back-button">Назад</a>
+
+    <h1>Книги</h1>
+
+    <div class="books-container">
+        <!-- Первая книга -->
+        <div class="book-card">
+            <img src="abai.jpeg" alt="Абай Слова Назидания">
+            <h2>Слова Назидания</h2>
+            <p>Состоит из 45 кратких притч и философских трактатов.</p>
+            <p class="genre">Жанр: проза</p>
+            <a href="https://abai.kaznu.kz/rus/?p=113" class="read-button">Читать</a>
+        </div>
+
+        <!-- Вторая книга -->
+        <div class="book-card">
+            <img src="puti_abaya.jpg" alt="Маргулан">
+            <h2>Путь Абая</h2>
+            <p>Рассказ о жизни Абая.</p>
+            <p class="genre">Жанр: биография</p>
+            <a href="https://gim6ast.edu.kz/assets/media/chitayushchaya-shkola/put-abaya-1-tom.pdf" class="read-button">Читать</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека им. Н.В. Гоголя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #0B2545;
+            color: white;
+        }
+
+        header {
+            background-color: #142850;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header nav a {
+            color: #F2C94C;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .register-btn {
+            background-color: #F2C94C;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #0B2545;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+        }
+
+        .text-section {
+            max-width: 50%;
+        }
+
+        .text-section h1 {
+            font-size: 48px;
+            line-height: 1.5;
+        }
+
+        .btn-events {
+            background-color: #F2C94C;
+            color: #0B2545;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .info {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item span {
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        .illustration {
+            max-width: 45%;
+        }
+
+        footer {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        footer img {
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="main.html">Главная</a>
+            <a href="Forum.html">Форум</a>
+            <a href="quiz.html">Игры и ивенты</a>
+            <a href="about.html">О нас</a>
+            <a href="Rating.html">Рейтинг</a>
+        </nav>
+       <!-- <a class="register-btn" href="#">Зарегистрироваться</a> -->
+    </header>
+
+    <div class="container">
+        <div class="text-section">
+            <h1>Карагандинская областная универсальная научная библиотека им. Н.В. Гоголя</h1>
+            <a href="Книги.html"><button class="btn-events">Книги</button></a> <!-- Кнопка для перехода на Книги.html -->
+            <div class="info">
+                <div class="info-item">
+                    <span>📖Книги</span>
+                    <span>более 40 тыс.</span>
+                </div>
+                <div class="info-item">
+                    <span>👥Онлайн</span>
+                    <span>500 людей</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="illustration">
+            <img src="illustration.png" alt="Человек с книгой">
+        </div>
+    </div>
+
+    <footer>
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="location-icon.png" alt="Location">
+    </footer>
+</body>
+</html>

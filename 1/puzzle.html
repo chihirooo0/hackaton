@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книжные пазлы</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #0B2545;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            background-color: #142850;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header nav a {
+            color: #F2C94C;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .puzzle-container {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .pieces-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 216px;
+            margin-right: 30px;
+        }
+
+        .piece {
+            width: 216px;
+            height: 233px;
+            background-size: cover;
+            border: 1px solid #F2C94C; /* Снижен размер границы для минимизации расстояний */
+            border-radius: 5px;
+            cursor: move;
+        }
+
+        .target-container {
+            display: grid;
+            grid-template-columns: repeat(2, 216px);
+            grid-template-rows: repeat(3, 233px);
+            gap: 0; /* Убираем отступы между ячейками */
+            width: 432px; /* 2 columns * 216px */
+            height: 699px; /* 3 rows * 233px */
+            background-size: cover;
+            position: relative;
+        }
+
+        .target {
+            width: 216px;
+            height: 233px;
+            border: 1px solid #F2C94C; /* Снижен размер границы для минимизации расстояний */
+            background-size: cover;
+            position: absolute;
+            background-color: transparent;
+        }
+
+        .message {
+            display: none;
+            font-size: 24px;
+            color: #F2C94C;
+            margin-top: 20px;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Форум</a>
+            <a href="quiz.html">Игры и ивенты</a>
+            <a href="about.html">О нас</a>
+        </nav>
+    </header>
+
+    <h1>Собери обложку книги</h1>
+    <div class="puzzle-container">
+        <div class="pieces-container" id="pieces-container">
+            <!-- Пример частей пазла -->
+            <div class="piece" id="piece1" style="background-image: url('piece1.jpg');" draggable="true"></div>
+            <div class="piece" id="piece2" style="background-image: url('piece2.jpg');" draggable="true"></div>
+            <div class="piece" id="piece3" style="background-image: url('piece3.jpg');" draggable="true"></div>
+            <div class="piece" id="piece4" style="background-image: url('piece4.jpg');" draggable="true"></div>
+            <div class="piece" id="piece5" style="background-image: url('piece5.jpg');" draggable="true"></div>
+            <div class="piece" id="piece6" style="background-image: url('piece6.jpg');" draggable="true"></div>
+        </div>
+        <div class="target-container" id="target-container">
+            <!-- Места для размещения частей пазла -->
+            <div class="target" data-id="piece1" style="grid-area: 1 / 1 / 2 / 2;"></div>
+            <div class="target" data-id="piece2" style="grid-area: 1 / 2 / 2 / 3;"></div>
+            <div class="target" data-id="piece3" style="grid-area: 2 / 1 / 3 / 2;"></div>
+            <div class="target" data-id="piece4" style="grid-area: 2 / 2 / 3 / 3;"></div>
+            <div class="target" data-id="piece5" style="grid-area: 3 / 1 / 4 / 2;"></div>
+            <div class="target" data-id="piece6" style="grid-area: 3 / 2 / 4 / 3;"></div>
+        </div>
+    </div>
+
+    <div class="message" id="success-message">Поздравляем! Пазл собран правильно!</div>
+
+    <script>
+        const pieces = document.querySelectorAll('.piece');
+        const targets = document.querySelectorAll('.target');
+        const successMessage = document.getElementById('success-message');
+
+        let piecesPlaced = 0;
+
+        pieces.forEach(piece => {
+            piece.addEventListener('dragstart', dragStart);
+        });
+
+        targets.forEach(target => {
+            target.addEventListener('dragover', dragOver);
+            target.addEventListener('drop', drop);
+        });
+
+        function dragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const id = e.dataTransfer.getData('text');
+            const piece = document.getElementById(id);
+            const target = e.target;
+
+            // Check if the drop target is valid
+            if (target.classList.contains('target') && !target.hasChildNodes()) {
+                // Remove the previous piece if there is one
+                const previousPiece = document.querySelector(`#${target.dataset.id}`);
+                if (previousPiece) {
+                    previousPiece.style.display = 'block';
+                }
+
+                // Place the piece
+                target.style.backgroundImage = piece.style.backgroundImage;
+                target.style.backgroundSize = 'cover';
+                piece.style.display = 'none';
+                piecesPlaced++;
+
+                // Check if the puzzle is complete
+                if (piecesPlaced === targets.length) {
+                    successMessage.classList.add('show');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

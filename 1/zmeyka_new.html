@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Snake HTML Game</title>
+  <meta charset="UTF-8">
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    background-color: brown; /* Коричневый фон */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .container {
+    display: flex;
+    position: relative;
+    width: 600px;
+    height: 400px;
+  }
+
+  .scoreboard {
+    width: 200px;
+    background-color: #142850;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    z-index: 3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+
+  .scoreboard h2 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+
+  .scoreboard table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .scoreboard th, .scoreboard td {
+    padding: 5px;
+    text-align: left;
+  }
+
+  .scoreboard th {
+    background-color: #F2C94C;
+    color: #0B2545;
+  }
+
+  .scoreboard td {
+    color: white;
+  }
+
+  .game-container {
+    position: relative;
+    flex-grow: 1;
+    background: white;
+    border: 1px solid white;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://avatars.mds.yandex.net/i?id=bccf458b7ea7b32abcd48e600cfff9820a36d3d5-12752501-images-thumbs&n=13') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  canvas {
+    position: absolute;
+    border: 1px solid white;
+    z-index: 2;
+  }
+
+  /* Стиль для кнопки "Назад" */
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    z-index: 10; /* чтобы кнопка была над другими элементами */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .back-button::before {
+    content: '←'; /* Стрелочка */
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  </style>
+</head>
+<body>
+  <!-- Кнопка назад с перенаправлением на указанную страницу -->
+  <div class="back-button" onclick="window.location.href='file:quiz.html'">Назад</div>
+
+  <div class="container">
+    <div class="scoreboard">
+      <h2>Рекорды</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Имя</th>
+            <th>Очки</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Игрок 1</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>Игрок 2</td>
+            <td>450</td>
+          </tr>
+          <tr>
+            <td>Игрок 3</td>
+            <td>400</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="game-container">
+      <div class="background-image"></div>
+      <canvas width="400" height="400" id="game"></canvas>
+    </div>
+  </div>
+
+  <script>
+  var canvas = document.getElementById('game');
+  var context = canvas.getContext('2d');
+
+  var grid = 16;
+  var count = 0;
+
+  var snake = {
+    x: 160,
+    y: 160,
+    dx: grid,
+    dy: 0,
+    cells: [],
+    maxCells: 4
+  };
+
+  var apple = {
+    x: 320,
+    y: 320
+  };
+
+  var appleImage = new Image();
+  appleImage.src = 'https://avatars.mds.yandex.net/i?id=c6c19df67c9c591aeaf570c72bbc9fc22497ff30-8437558-images-thumbs&n=13';
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  function loop() {
+    requestAnimationFrame(loop);
+
+    if (++count < 4) {
+      return;
+    }
+
+    count = 0;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    snake.x += snake.dx;
+    snake.y += snake.dy;
+
+    if (snake.x < 0) {
+      snake.x = canvas.width - grid;
+    }
+    else if (snake.x >= canvas.width) {
+      snake.x = 0;
+    }
+
+    if (snake.y < 0) {
+      snake.y = canvas.height - grid;
+    }
+    else if (snake.y >= canvas.height) {
+      snake.y = 0;
+    }
+
+    snake.cells.unshift({x: snake.x, y: snake.y});
+
+    if (snake.cells.length > snake.maxCells) {
+      snake.cells.pop();
+    }
+
+    context.drawImage(appleImage, apple.x, apple.y, grid-1, grid-1);
+
+    context.fillStyle = 'green';
+    snake.cells.forEach(function(cell, index) {
+      context.fillRect(cell.x, cell.y, grid-1, grid-1);
+
+      if (cell.x === apple.x && cell.y === apple.y) {
+        snake.maxCells++;
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+      }
+
+      for (var i = index + 1; i < snake.cells.length; i++) {
+        if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+          snake.x = 160;
+          snake.y = 160;
+          snake.cells = [];
+          snake.maxCells = 4;
+          snake.dx = grid;
+          snake.dy = 0;
+          apple.x = getRandomInt(0, 25) * grid;
+          apple.y = getRandomInt(0, 25) * grid;
+        }
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.which === 37 && snake.dx === 0) {
+      snake.dx = -grid;
+      snake.dy = 0;
+    }
+    else if (e.which === 38 && snake.dy === 0) {
+      snake.dy = -grid;
+      snake.dx = 0;
+    }
+    else if (e.which === 39 && snake.dx === 0) {
+      snake.dx = grid;
+      snake.dy = 0;
+    }
+    else if (e.which === 40 && snake.dy === 0) {
+      snake.dy = grid;
+      snake.dx = 0;
+    }
+  });
+
+  requestAnimationFrame(loop);
+  </script>
+</body>
+</html>

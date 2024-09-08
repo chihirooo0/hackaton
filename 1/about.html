@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Библиотека им. Н.В. Гоголя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #0B2545;
+            color: white;
+        }
+
+        header {
+            background-color: #142850;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: #F2C94C;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .register-btn {
+            background-color: #F2C94C;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #0B2545;
+        }
+
+        .container {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+
+        .container p {
+            font-size: 20px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-section {
+            margin-top: 50px;
+        }
+
+        .team-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+        }
+
+        .member {
+            margin: 0 30px;
+            text-align: center;
+        }
+
+        .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .member h3 {
+            margin-top: 15px;
+            font-size: 22px;
+        }
+
+        .member p {
+            font-size: 18px;
+        }
+
+        footer {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        footer img {
+            width: 30px;
+            height: 30px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="main.html">Главная</a>            
+            <a href="Forum.html">Форум</a>
+            <a href="quiz.html">Игры и ивенты</a> <!-- Ссылка на страницу "О нас" -->
+            <a href="Rating.html">Рейтинг</a>
+        </nav>
+       <!-- <a class="register-btn" href="#">Зарегистрироваться</a> -->
+    </header>
+
+    <div class="container">
+        <h1>О библиотеке им. Н.В. Гоголя</h1>
+        <p>
+            Наша библиотека — одна из старейших научных библиотек Казахстана, основанная в 1934 году. Мы предоставляем доступ к уникальной коллекции книг, журналов, архивов и цифровых материалов. 
+            В настоящее время библиотека активно развивает цифровые технологии, чтобы обеспечить удобный доступ к информации для всех желающих.
+        </p>
+
+        <div class="team-section">
+            <h2 class="team-title">Наша команда</h2>
+            <div class="team-members">
+                <div class="member">
+                    <img src="team-member1.png" alt="Член команды 1">
+                    <h3>Анна Иванова</h3>
+                    <p>Директор библиотеки</p>
+                </div>
+                <div class="member">
+                    <img src="team-member2.png" alt="Член команды 2">
+                    <h3>Алексей Петров</h3>
+                    <p>Заведующий архивом</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="location-icon.png" alt="Location">
+    </footer>
+</body>
+</html>

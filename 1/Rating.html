@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы О Нашей Библиотеке</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #1c2a4b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+        /* Кнопка "Назад" */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ffcc00;
+            color: #1c2a4b;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            background-color: #ffb300;
+        }
+        .reviews-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+        .left-panel {
+            width: 50%;
+        }
+        .left-panel h1 {
+            font-size: 28px;
+        }
+        .left-panel p {
+            font-size: 16px;
+            color: #7a8ba5;
+            line-height: 1.5;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .rating span {
+            display: inline-block;
+            background-color: #fdd835;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+        .rating div {
+            margin-left: 10px;
+            color: #7a8ba5;
+        }
+        .right-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 50%;
+        }
+        .review-box {
+            background-color: #1c2a4b;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 45%;
+            font-size: 14px;
+        }
+        .review-box h3 {
+            margin-top: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка "Назад" -->
+    <a href="main.html" class="back-button">Назад</a>
+
+    <div class="reviews-container">
+        <!-- Левая панель -->
+        <div class="left-panel">
+            <h1>Отзывы О Нашей Библиотеке</h1>
+            <p>Карагандинская областная универсальная научная библиотека им. Н.В. Гоголя — главная универсальная библиотека Карагандинской области, расположена в городе Караганде.</p>
+            
+            <!-- Рейтинг -->
+            <div class="rating">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <div>(5/5) Общая оценка</div>
+            </div>
+        </div>
+
+        <!-- Правая панель (отзывы) -->
+        <div class="right-panel">
+            <div class="review-box">
+                <h3>Елена Пак</h3>
+                <p>Отличная библиотека в центре города расположена рядом с краеведческим музеем и дворцом детей и юношества.</p>
+            </div>
+            <div class="review-box">
+                <h3>Сулеймен Жумабеков</h3>
+                <p>Отличное обслуживание, большой выбор литературы.</p>
+            </div>
+            <div class="review-box">
+                <h3>Жанна Сулейменова</h3>
+                <p>Хороший выбор литературы. При библиотеке работают разговорный клуб казахского языка, есть английский разговорный клуб. Проводятся встречи с интересными людьми.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
